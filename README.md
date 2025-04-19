@@ -24,10 +24,18 @@ A sleek, easy-to-use React + TypeScript web app that helps you calculate your mo
 ---
 
 ## 🛠 Tech Stack
-- Framework: React
+### Frontend:
 
-- Language: TypeScript
+- React
 
-- Styling: CSS
+- TypeScript
 
-- Build Tool: Create React App
+- CSS
+
+### Build Tool:
+
+- Create React App
+
+### Development Environment:
+
+- Visual Studio Code
