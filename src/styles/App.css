@@ -3,6 +3,26 @@
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+}
+
+.App.dark {
+  background-color: #333;
+  color: white;
+}
+
+button.toggle-mode {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button.toggle-mode:hover {
+  background-color: #005f73;
 }
 
 .calculator-container {
@@ -10,6 +30,11 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App.dark .calculator-container {
+  background-color: #444;
+  color: white;
 }
 
 .input-group {
