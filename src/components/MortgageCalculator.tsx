@@ -91,7 +91,6 @@ function App() {
       <div className="calculator-container">
         {/* ✅ New: Currency selector */}
         <div className="input-group">
-          <label>Currency:</label>
           <CurrencySelector currency={currency} setCurrency={setCurrency} />
         </div>
 

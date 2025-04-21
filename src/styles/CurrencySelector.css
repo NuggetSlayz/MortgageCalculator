@@ -1,6 +1,10 @@
 .custom-select {
     margin-bottom: 1rem;
   }
+
+  .custom-select select, .custom-select option {
+    font-family: inherit;
+  }
   
   .custom-select label {
     display: block;
