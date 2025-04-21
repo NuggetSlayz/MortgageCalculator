@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/App.css';
+import CurrencySelector from '../components/CurrencySelector';
 
 function App() {
   const [purchasePrice, setPurchasePrice] = useState(0);
@@ -91,24 +92,7 @@ function App() {
         {/* ✅ New: Currency selector */}
         <div className="input-group">
           <label>Currency:</label>
-          <select className="currency-selector" value={currency} onChange={(e) => setCurrency(e.target.value)}>
-            <option value="GBP">GBP (£)</option>
-            <option value="USD">USD ($)</option>
-            <option value="EUR">EUR (€)</option>
-            <option value="JPY">JPY (¥)</option>
-            <option value="AUD">AUD (A$)</option>
-            <option value="CAD">CAD (C$)</option>
-            <option value="CHF">CHF (CHF)</option>
-            <option value="CNY">CNY (¥)</option>
-            <option value="INR">INR (₹)</option>
-            <option value="RUB">RUB (₽)</option>
-            <option value="BRL">BRL (R$)</option>
-            <option value="ZAR">ZAR (R)</option>
-            <option value="MXN">MXN ($)</option>
-            <option value="SGD">SGD ($)</option>
-            <option value="NZD">NZD ($)</option>
-            <option value="HKD">HKD (HK$)</option>
-            </select>
+          <CurrencySelector currency={currency} setCurrency={setCurrency} />
         </div>
 
         <div className="input-group">
