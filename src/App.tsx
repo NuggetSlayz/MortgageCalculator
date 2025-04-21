@@ -9,7 +9,7 @@ function App() {
     };
 
   return (
-    <div className={'App ${isDarkMode ? "dark" : ""}'}>
+    <div className={`App ${isDarkMode ? "dark" : ""}`}>
       <button className="toggle-mode" onClick={toggleMode}>
         {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
       </button>
