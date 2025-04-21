@@ -6,6 +6,35 @@ function App() {
   const [downPayment, setDownPayment] = useState(0);
   const [repaymentTime, setRepaymentTime] = useState(30);
   const [interestRate, setInterestRate] = useState(3.5);
+  const [currency, setCurrency] = useState("GBP"); // Currency state
+
+  // Currency symbol mapping
+  const currencySymbols: { [key: string]: string } = {
+    GBP: "£",
+    USD: "$",
+    EUR: "€",
+    JPY: "¥",
+    AUD: "A$",
+    CAD: "C$",
+    CHF: "CHF",
+    CNY: "¥",
+    INR: "₹",
+    RUB: "₽",
+    BRL: "R$",
+    ZAR: "R",
+    MXN: "$",
+    SGD: "$",
+    NZD: "$",
+    HKD: "HK$",
+  };
+
+  // Format numbers to local currency
+  const formatCurrency = (value: number) => 
+    new Intl.NumberFormat('en-GB', {
+      style: "currency",
+      currency: currency,
+      minimumFractionDigits: 2,
+    }).format(value);
 
   useEffect(() => {
     // Check if there are saved values in localStorage
@@ -16,14 +45,15 @@ function App() {
       setDownPayment(data.downPayment);
       setRepaymentTime(data.repaymentTime);
       setInterestRate(data.interestRate);
+      if (data.currency) setCurrency(data.currency); // Restore currency
     }
   }, []);
 
   useEffect(() => {
     // Save values to localStorage whenever they change
-    const data = { purchasePrice, downPayment, repaymentTime, interestRate };
+    const data = { purchasePrice, downPayment, repaymentTime, interestRate, currency };
     localStorage.setItem('mortgageData', JSON.stringify(data));
-  }, [purchasePrice, downPayment, repaymentTime, interestRate]);
+  }, [purchasePrice, downPayment, repaymentTime, interestRate, currency]);
   
   const loanAmount = purchasePrice - downPayment;
   
@@ -58,8 +88,31 @@ function App() {
       <h1>Mortgage Calculator</h1>
       
       <div className="calculator-container">
+        {/* ✅ New: Currency selector */}
         <div className="input-group">
-          <label>Purchase Price (£):</label>
+          <label>Currency:</label>
+          <select className="currency-selector" value={currency} onChange={(e) => setCurrency(e.target.value)}>
+            <option value="GBP">GBP (£)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="JPY">JPY (¥)</option>
+            <option value="AUD">AUD (A$)</option>
+            <option value="CAD">CAD (C$)</option>
+            <option value="CHF">CHF (CHF)</option>
+            <option value="CNY">CNY (¥)</option>
+            <option value="INR">INR (₹)</option>
+            <option value="RUB">RUB (₽)</option>
+            <option value="BRL">BRL (R$)</option>
+            <option value="ZAR">ZAR (R)</option>
+            <option value="MXN">MXN ($)</option>
+            <option value="SGD">SGD ($)</option>
+            <option value="NZD">NZD ($)</option>
+            <option value="HKD">HKD (HK$)</option>
+            </select>
+        </div>
+
+        <div className="input-group">
+          <label>Purchase Price ({currencySymbols[currency]}):</label>
           <input
             type="number"
             value={purchasePrice}
@@ -68,7 +121,7 @@ function App() {
         </div>
 
         <div className="input-group">
-          <label>Down Payment (£):</label>
+          <label>Down Payment ({currencySymbols[currency]}):</label>
           <input
             type="number"
             value={downPayment}
@@ -97,8 +150,8 @@ function App() {
 
         <div className="results">
           <h2>Results</h2>
-          <p>Loan Amount: £{loanAmount}</p>
-          <p>Monthly Payment: £{calculateMonthlyPayment()}</p>
+          <p>Loan Amount: {formatCurrency(loanAmount)}</p>
+          <p>Monthly Payment: {formatCurrency(Number(calculateMonthlyPayment()))}</p>
         </div>
       </div>
     </div>

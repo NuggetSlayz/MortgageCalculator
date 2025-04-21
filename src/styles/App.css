@@ -37,6 +37,30 @@ button.toggle-mode:hover {
   color: white;
 }
 
+.currency-selector {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+}
+
+.currency-selector:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.dark .currency-selector {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
 .input-group {
   margin-bottom: 15px;
 }
