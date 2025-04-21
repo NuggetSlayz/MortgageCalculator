@@ -97,3 +97,18 @@ button.toggle-mode:hover {
   font-size: 18px;
   margin: 10px 0;
 }
+
+:root {
+  --text-color: #000;
+  --bg-color: #fff;
+}
+
+.App.dark {
+  --text-color: #fff;
+  --bg-color: #333;
+}
+
+.App.dark .dropdown-option {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
